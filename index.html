@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David Rubio — Site Supervisor | Building &amp; Construction</title>
+<meta name="description" content="Juan David Rubio Salazar — 10 years bridging hands-on trade execution and site leadership. Diploma &amp; Cert IV in Building and Construction, IRATA Level 2 Rope Access, owner-operator of Painting Culture Sydney.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0d0d;
+    --bg-alt:#111111;
+    --surface:#1a1a1a;
+    --surface-2:#161616;
+    --border:rgba(255,255,255,0.08);
+    --border-strong:rgba(255,255,255,0.14);
+    --orange:#cc785c;
+    --orange-bright:#e2977a;
+    --orange-dim:rgba(204,120,92,0.14);
+    --white:#ffffff;
+    --silver:#a1a1aa;
+    --silver-dim:#6f6f78;
+    --radius:14px;
+    --radius-sm:10px;
+    --maxw:1180px;
+    --shadow:0 20px 60px -20px rgba(0,0,0,0.6);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--white);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul{list-style:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  section{position:relative;}
+
+  /* background texture */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(204,120,92,0.08), transparent 40%),
+      radial-gradient(circle at 85% 25%, rgba(204,120,92,0.05), transparent 35%),
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:auto,auto,44px 44px,44px 44px;
+    pointer-events:none;
+    z-index:0;
+    mask-image:linear-gradient(to bottom, black, black 60%, transparent 100%);
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(13,13,13,0.72);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;letter-spacing:0.01em;}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange);}
+  .brand small{display:block;font-weight:500;font-size:11px;color:var(--silver-dim);letter-spacing:0.08em;text-transform:uppercase;}
+  nav.links{display:flex;align-items:center;gap:28px;}
+  nav.links a{font-size:14px;color:var(--silver);font-weight:500;transition:color .2s ease;position:relative;}
+  nav.links a:hover{color:var(--white);}
+  .status-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--orange-dim);border:1px solid rgba(204,120,92,0.35);
+    color:var(--orange-bright);
+    padding:7px 14px;border-radius:999px;
+    font-size:12.5px;font-weight:600;letter-spacing:0.01em;
+    white-space:nowrap;
+  }
+  .status-pill .pulse{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80;flex-shrink:0;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+  .header-actions{display:flex;align-items:center;gap:14px;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:11px 20px;border-radius:9px;font-weight:600;font-size:14px;
+    cursor:pointer;border:1px solid transparent;transition:all .2s ease;
+    white-space:nowrap;
+  }
+  .btn-orange{background:linear-gradient(180deg,var(--orange-bright),var(--orange));color:#141105;box-shadow:0 8px 20px -8px rgba(204,120,92,0.55);}
+  .btn-orange:hover{transform:translateY(-1px);box-shadow:0 12px 26px -8px rgba(204,120,92,0.7);}
+  .btn-ghost{background:var(--surface);border:1px solid var(--border-strong);color:var(--white);}
+  .btn-ghost:hover{border-color:var(--orange);color:var(--orange-bright);}
+  .btn-sm{padding:8px 14px;font-size:13px;}
+  .menu-toggle{display:none;background:none;border:1px solid var(--border-strong);border-radius:8px;width:40px;height:40px;color:var(--white);cursor:pointer;align-items:center;justify-content:center;}
+  .mobile-panel{display:none;flex-direction:column;gap:2px;padding:14px 0 20px;border-top:1px solid var(--border);}
+  .mobile-panel a{padding:12px 4px;font-size:15px;color:var(--silver);border-bottom:1px solid var(--border);}
+  .mobile-panel.open{display:flex;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:88px 0 60px;position:relative;z-index:1;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--orange-bright);margin-bottom:20px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--orange);}
+  h1.hero-title{
+    font-size:clamp(38px,5.2vw,64px);
+    font-weight:800;letter-spacing:-0.03em;line-height:1.04;
+    margin-bottom:20px;
+  }
+  h1.hero-title .accent{
+    background:linear-gradient(120deg,var(--orange-bright),var(--orange) 60%,#8a4a34);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-sub{font-size:17px;color:var(--silver);max-width:600px;margin-bottom:30px;line-height:1.7;}
+  .hero-sub strong{color:var(--white);font-weight:600;}
+  .contact-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;}
+  .contact-chip{
+    display:flex;align-items:center;gap:8px;
+    background:var(--surface);border:1px solid var(--border);
+    padding:9px 14px;border-radius:9px;font-size:13.5px;color:var(--silver);
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .contact-chip:hover{border-color:var(--orange);color:var(--white);}
+  .contact-chip svg{width:15px;height:15px;stroke:var(--orange);flex-shrink:0;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+
+  .hero-visual{position:relative;}
+  .hero-photo-frame{
+    position:relative;border-radius:var(--radius);overflow:hidden;
+    border:1px solid var(--border-strong);box-shadow:var(--shadow);
+    aspect-ratio:4/5;
+  }
+  .hero-photo-frame img{width:100%;height:100%;object-fit:cover;}
+  .hero-photo-frame::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 40%, rgba(13,13,13,0.85) 100%);
+  }
+  .hero-photo-caption{
+    position:absolute;left:0;right:0;bottom:0;padding:20px;z-index:2;
+  }
+  .hero-photo-caption .tag{
+    display:inline-block;background:rgba(204,120,92,0.9);color:#141105;
+    font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;
+    padding:4px 10px;border-radius:5px;margin-bottom:8px;
+  }
+  .hero-photo-caption p{font-size:13.5px;color:#e9e9ea;font-weight:500;}
+
+  /* metrics */
+  .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px;}
+  .metric-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:26px 22px;transition:border-color .25s ease, transform .25s ease;
+  }
+  .metric-card:hover{border-color:rgba(204,120,92,0.4);transform:translateY(-3px);}
+  .metric-num{
+    font-size:clamp(30px,3.4vw,40px);font-weight:800;letter-spacing:-0.02em;
+    color:var(--orange-bright);margin-bottom:8px;line-height:1;
+  }
+  .metric-label{font-size:13.5px;color:var(--silver);font-weight:500;line-height:1.5;}
+
+  /* ---------- Section shared ---------- */
+  .section{padding:96px 0;position:relative;z-index:1;}
+  .section-alt{background:linear-gradient(180deg,transparent, rgba(255,255,255,0.015) 15%, rgba(255,255,255,0.015) 85%, transparent);}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-tag{
+    font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--orange-bright);margin-bottom:14px;display:block;
+  }
+  .section-head h2{font-size:clamp(28px,3.4vw,38px);font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;}
+  .section-head p{color:var(--silver);font-size:15.5px;line-height:1.7;}
+
+  /* ---------- Timeline ---------- */
+  .timeline{position:relative;padding-left:2px;}
+  .timeline::before{
+    content:"";position:absolute;left:19px;top:6px;bottom:6px;width:1px;
+    background:linear-gradient(180deg,var(--orange),rgba(204,120,92,0.06));
+  }
+  .t-item{position:relative;padding-left:60px;padding-bottom:44px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-dot{
+    position:absolute;left:10px;top:2px;width:20px;height:20px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--orange);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .t-item.current .t-dot{background:var(--orange);box-shadow:0 0 0 5px rgba(204,120,92,0.16);}
+  .t-dot .inner{width:6px;height:6px;border-radius:50%;background:var(--orange);}
+  .t-item.current .t-dot .inner{background:#141105;}
+  .t-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:24px 26px;transition:border-color .25s ease, transform .25s ease;
+  }
+  .t-card:hover{border-color:var(--border-strong);transform:translateX(4px);}
+  .t-period{font-size:12.5px;font-weight:700;color:var(--orange-bright);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;}
+  .t-role{font-size:18px;font-weight:700;margin-bottom:4px;letter-spacing:-0.01em;}
+  .t-org{font-size:13.5px;color:var(--silver-dim);margin-bottom:12px;}
+  .t-desc{font-size:14px;color:var(--silver);line-height:1.7;}
+  .t-desc ul{margin-top:8px;}
+  .t-desc li{position:relative;padding-left:16px;margin-bottom:6px;}
+  .t-desc li::before{content:"—";position:absolute;left:0;color:var(--orange);}
+  .t-badge{
+    display:inline-block;margin-top:12px;font-size:11.5px;font-weight:700;
+    color:var(--orange-bright);background:var(--orange-dim);border:1px solid rgba(204,120,92,0.3);
+    padding:4px 10px;border-radius:6px;letter-spacing:0.02em;
+  }
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- Credentials ---------- */
+  .cred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .cred-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    padding:26px;transition:all .25s ease;position:relative;overflow:hidden;
+  }
+  .cred-card:hover{border-color:rgba(204,120,92,0.4);transform:translateY(-4px);box-shadow:var(--shadow);}
+  .cred-icon{
+    width:44px;height:44px;border-radius:10px;background:var(--orange-dim);
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .cred-icon svg{width:22px;height:22px;stroke:var(--orange-bright);}
+  .cred-card h3{font-size:16.5px;font-weight:700;margin-bottom:6px;letter-spacing:-0.005em;}
+  .cred-org{font-size:13px;color:var(--silver-dim);margin-bottom:14px;}
+  .cred-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+  .cred-chip{font-size:11px;font-weight:600;color:var(--silver);background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:3px 9px;border-radius:5px;}
+  .verified{
+    display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#4ade80;
+  }
+  .verified svg{width:14px;height:14px;stroke:#4ade80;}
+
+  .skills-band{margin-top:44px;padding-top:44px;border-top:1px solid var(--border);}
+  .skills-band h3{font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:var(--silver-dim);margin-bottom:18px;font-weight:700;}
+  .chip-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .skill-chip{
+    font-size:13.5px;font-weight:500;color:var(--silver);background:var(--surface-2);
+    border:1px solid var(--border);padding:8px 15px;border-radius:999px;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .skill-chip:hover{border-color:var(--orange);color:var(--orange-bright);}
+  .lang-row{display:flex;gap:26px;margin-top:26px;flex-wrap:wrap;}
+  .lang-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--silver);}
+  .lang-item b{color:var(--white);}
+
+  /* ---------- Projects / Gallery ---------- */
+  .filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+  .filter-btn{
+    font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:999px;
+    background:var(--surface);border:1px solid var(--border);color:var(--silver);
+    cursor:pointer;transition:all .2s ease;
+  }
+  .filter-btn:hover{color:var(--white);border-color:var(--border-strong);}
+  .filter-btn.active{background:var(--orange);border-color:var(--orange);color:#141105;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .g-item{
+    position:relative;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer;
+    aspect-ratio:4/3;border:1px solid var(--border);background:var(--surface);
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .g-item.hide{display:none;}
+  .g-item:hover{transform:translateY(-4px);border-color:rgba(204,120,92,0.4);}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .g-item:hover img{transform:scale(1.06);}
+  .g-overlay{
+    position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
+    padding:16px;background:linear-gradient(180deg,transparent 45%, rgba(0,0,0,0.85) 100%);
+  }
+  .g-cat{font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange-bright);margin-bottom:4px;}
+  .g-title{font-size:14px;font-weight:600;color:var(--white);}
+  .g-expand{
+    position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:8px;
+    background:rgba(13,13,13,0.6);backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(255,255,255,0.15);
+  }
+  .g-expand svg{width:15px;height:15px;stroke:#fff;}
+
+  /* lightbox */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(5,5,5,0.94);backdrop-filter:blur(6px);
+    z-index:1000;display:none;align-items:center;justify-content:center;padding:32px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-inner{max-width:1000px;width:100%;position:relative;}
+  .lightbox-inner img{width:100%;max-height:76vh;object-fit:contain;border-radius:10px;border:1px solid var(--border-strong);}
+  .lightbox-caption{display:flex;justify-content:space-between;align-items:center;margin-top:16px;flex-wrap:wrap;gap:10px;}
+  .lightbox-caption .g-title{font-size:16px;}
+  .lb-close{
+    position:absolute;top:-46px;right:0;width:38px;height:38px;border-radius:8px;
+    background:var(--surface);border:1px solid var(--border-strong);color:#fff;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+  }
+  .lb-nav{
+    position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
+    background:rgba(26,26,26,0.8);border:1px solid var(--border-strong);color:#fff;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+  }
+  .lb-prev{left:-14px;}
+  .lb-next{right:-14px;}
+  @media(max-width:900px){.lb-prev{left:4px;}.lb-next{right:4px;}}
+
+  /* ---------- Contact CTA ---------- */
+  .contact-card{
+    background:radial-gradient(circle at 20% 20%, rgba(204,120,92,0.10), transparent 55%), var(--surface);
+    border:1px solid var(--border-strong);border-radius:20px;
+    padding:56px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;
+  }
+  .contact-card h2{font-size:clamp(26px,3vw,34px);font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;}
+  .contact-card p{color:var(--silver);font-size:15px;line-height:1.7;margin-bottom:24px;max-width:480px;}
+  .contact-methods{display:flex;flex-direction:column;gap:12px;}
+  .contact-method{
+    display:flex;align-items:center;gap:14px;background:var(--surface-2);
+    border:1px solid var(--border);padding:16px 18px;border-radius:12px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .contact-method:hover{border-color:var(--orange);transform:translateX(4px);}
+  .cm-icon{width:38px;height:38px;border-radius:9px;background:var(--orange-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cm-icon svg{width:18px;height:18px;stroke:var(--orange-bright);}
+  .cm-label{font-size:11.5px;color:var(--silver-dim);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;}
+  .cm-value{font-size:14.5px;font-weight:600;color:var(--white);}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--border);padding:36px 0;position:relative;z-index:1;}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  .footer-row p{font-size:13px;color:var(--silver-dim);}
+  .footer-links{display:flex;gap:20px;}
+  .footer-links a{font-size:13px;color:var(--silver-dim);transition:color .2s ease;}
+  .footer-links a:hover{color:var(--orange-bright);}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1;max-width:360px;}
+    .cred-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-card{grid-template-columns:1fr;padding:40px 28px;}
+  }
+  @media(max-width:760px){
+    nav.links{display:none;}
+    .menu-toggle{display:flex;}
+    .status-pill{display:none;}
+    .wrap{padding:0 20px;}
+    .metrics{grid-template-columns:1fr;}
+    .cred-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .section{padding:64px 0;}
+    .hero{padding:40px 0 40px;}
+    .header-actions .btn-ghost span{display:none;}
+  }
+  @media(max-width:520px){
+    .gallery-grid{grid-template-columns:1fr;}
+    .contact-row{gap:8px;}
+    .hero-ctas{flex-direction:column;align-items:stretch;}
+    .filter-row{gap:8px;}
+  }
+
+  /* ---------- Before / After ---------- */
+  .ba-card{
+    background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow);
+  }
+  .ba-images{display:grid;grid-template-columns:1fr 1fr;position:relative;background:var(--border-strong);gap:1px;}
+  .ba-img-wrap{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--surface-2);}
+  .ba-img-wrap img{width:100%;height:100%;object-fit:cover;}
+  .ba-label{
+    position:absolute;top:16px;left:16px;font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
+    padding:6px 13px;border-radius:7px;z-index:2;
+  }
+  .ba-label.before{background:rgba(10,10,10,0.65);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,0.22);}
+  .ba-label.after{background:var(--orange);color:#1a0f0a;}
+  .ba-divider{
+    position:absolute;top:0;bottom:0;left:50%;width:44px;margin-left:-22px;z-index:3;
+    display:flex;align-items:center;justify-content:center;pointer-events:none;
+  }
+  .ba-divider span{
+    width:40px;height:40px;border-radius:50%;background:var(--orange);color:#1a0f0a;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px -4px rgba(0,0,0,0.6);
+  }
+  .ba-caption{padding:26px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;}
+  .ba-caption h3{font-size:19px;font-weight:700;margin-bottom:6px;letter-spacing:-0.01em;}
+  .ba-caption p{font-size:14px;color:var(--silver);line-height:1.65;max-width:560px;}
+  .ba-tag{
+    flex-shrink:0;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--orange-bright);background:var(--orange-dim);border:1px solid rgba(204,120,92,0.3);
+    padding:6px 12px;border-radius:7px;white-space:nowrap;
+  }
+  @media(max-width:700px){
+    .ba-images{grid-template-columns:1fr;}
+    .ba-divider{display:none;}
+    .ba-img-wrap{aspect-ratio:16/10;}
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <span class="dot"></span>
+      <span>DAVID RUBIO<small>Site Supervisor · Building &amp; Construction</small></span>
+    </a>
+    <nav class="links">
+      <a href="#timeline">Experience</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#transformation">Before/After</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <span class="status-pill"><span class="pulse"></span>Available for Site Management Roles — Sydney</span>
+      <a class="btn btn-ghost btn-sm" href="resume.pdf" download><span>Résumé</span> ↓</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="wrap mobile-panel" id="mobilePanel">
+    <a href="#timeline">Experience</a>
+    <a href="#credentials">Credentials</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a href="resume.pdf" download>Download Résumé</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Site Supervisor · Junior Foreman · Site Manager</span>
+        <h1 class="hero-title">Juan David<br><span class="accent">Rubio Salazar</span></h1>
+        <p class="hero-sub">
+          Construction professional with <strong>10 years</strong> of industry experience, a Diploma and Certificate IV in Building &amp; Construction, and IRATA Level 2 Rope Access certification. Currently owner-operator of <strong>Painting Culture Sydney</strong>, delivering residential and commercial projects end-to-end — from estimation to handover — and now seeking a Site Supervisor, Junior Foreman, or Estimator role to apply that leadership on someone else's build.
+        </p>
+        <div class="contact-row">
+          <a class="contact-chip" href="tel:+61450142889">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            0450 142 889
+          </a>
+          <a class="contact-chip" href="mailto:juandavidr.c@hotmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" fill="none"/><path d="M22 6l-10 7L2 6"/></svg>
+            juandavidr.c@hotmail.com
+          </a>
+          <a class="contact-chip" href="https://instagram.com/painting.culture" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @painting.culture
+          </a>
+          <span class="contact-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Sydney, NSW
+          </span>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn btn-orange" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="resume.pdf" download>Download résumé</a>
+          <a class="btn btn-ghost" href="https://www.seek.com.au/profiles/juandavid-rubiosalazar-ZrVkkZKz1K" target="_blank" rel="noopener">SEEK profile ↗</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo-frame">
+          <img src="images/hero-action-ladder.jpg" alt="David Rubio on the tools, finishing exterior trim on a Sydney residential project">
+          <div class="hero-photo-caption">
+            <span class="tag">On site</span>
+            <p>Exterior finishing, Sydney North Shore — Painting Culture Sydney</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric-card reveal">
+        <div class="metric-num">10 Yrs</div>
+        <div class="metric-label">Construction experience — bridging high-risk trade execution with formal building management qualifications.</div>
+      </div>
+      <div class="metric-card reveal">
+        <div class="metric-num">100%</div>
+        <div class="metric-label">WHS &amp; height safety compliance — IRATA Level 2 certified with a zero-incident record on complex high-access projects.</div>
+      </div>
+      <div class="metric-card reveal">
+        <div class="metric-num">6+ Yrs</div>
+        <div class="metric-label">End-to-end project delivery — running a Sydney contracting business across estimation, scheduling, QA and handover.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section class="section section-alt" id="timeline">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">Career Evolution</span>
+      <h2>From the tools to running the job</h2>
+      <p>A decade-long path from hands-on trade specialist to business owner and lead contractor — now formally bridged with building &amp; construction management qualifications.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-dot"><span class="inner"></span></div>
+        <div class="t-card">
+          <div class="t-period">2012 – 2017 · Medellín, Colombia</div>
+          <div class="t-role">Foundations — High School &amp; Environmental Engineering</div>
+          <div class="t-org">Liceo San Rafael de Belén · University of Medellín</div>
+          <div class="t-desc">Completed high school and a degree in Environmental Engineering before relocating to Sydney — the analytical grounding that now underpins how I approach site logistics, compliance and project planning.</div>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-dot"><span class="inner"></span></div>
+        <div class="t-card">
+          <div class="t-period">Jan 2016 – Dec 2019 · Sydney</div>
+          <div class="t-role">Independent Trade Specialist / Site Contractor</div>
+          <div class="t-org">Various high-end residential &amp; commercial developments</div>
+          <div class="t-desc">
+            Delivered specialised trade services as an independent subcontractor, building a foundation in trade sequencing, quality control and general site operations.
+            <ul>
+              <li>Collaborated with site foremen and carpenters to deliver premium finishes on complex architectural projects</li>
+              <li>Managed material handling and applied architectural site drawings while enforcing WHS standards</li>
+              <li>Performed remedial facade repairs and inspections at height under rigorous high-risk work protocols</li>
+              <li>Gained insight into the critical path of construction across multi-trade environments</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-dot"><span class="inner"></span></div>
+        <div class="t-card">
+          <div class="t-period">2019 – 2021</div>
+          <div class="t-role">Formalising the Business Foundation</div>
+          <div class="t-org">Australian Pacific College · Building Institute NSW</div>
+          <div class="t-desc">Completed Certificate III in Business (2019) and Certificate IV in Marketing &amp; Communication (2020), then Certificate III in Painting &amp; Decorating (2021) — pairing commercial literacy with a licensed trade qualification.</div>
+        </div>
+      </div>
+
+      <div class="t-item current reveal">
+        <div class="t-dot"><span class="inner"></span></div>
+        <div class="t-card">
+          <div class="t-period">Jan 2020 – Present · Sydney</div>
+          <div class="t-role">Business Owner &amp; Lead Contractor</div>
+          <div class="t-org">Painting Culture Sydney</div>
+          <div class="t-desc">
+            Founded and grew a specialised contracting business serving residential and commercial clients, responsible for end-to-end delivery from estimation to defect rectification.
+            <ul>
+              <li>Managed subcontractor schedules, material procurement and client stakeholder relationships</li>
+              <li>Enforced strict WHS/OHS compliance on-site, including SWMS and risk assessments</li>
+              <li>Supervised QA standards to ensure high-end finishes across every handover</li>
+              <li>Utilised IRATA Rope Access qualifications to plan and execute complex height-safety access solutions</li>
+            </ul>
+          </div>
+          <span class="t-badge">Current · 6+ years</span>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-dot"><span class="inner"></span></div>
+        <div class="t-card">
+          <div class="t-period">2023</div>
+          <div class="t-role">IRATA Level 2 Rope Access Certified</div>
+          <div class="t-org">Industrial Rope Access Trade Association</div>
+          <div class="t-desc">Assessed as fully competent to IRATA Level 2, opening the door to complex high-access and remedial facade work on strata and heritage buildings.</div>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-dot"><span class="inner"></span></div>
+        <div class="t-card">
+          <div class="t-period">2023 – 2025</div>
+          <div class="t-role">Certificate IV &amp; Diploma of Building and Construction</div>
+          <div class="t-org">Lead College NSW · AHMI</div>
+          <div class="t-desc">Formally bridged a decade of hands-on trade knowledge with technical education — building estimation, contract administration, WHS management and site supervision theory to match years of practice.</div>
+        </div>
+      </div>
+
+      <div class="t-item current reveal">
+        <div class="t-dot"><span class="inner"></span></div>
+        <div class="t-card">
+          <div class="t-period">Now</div>
+          <div class="t-role">Studying Civil Construction Design</div>
+          <div class="t-org">South Sydney College</div>
+          <div class="t-desc">Currently furthering technical skills in civil construction design while actively seeking a Site Supervisor, Junior Foreman or Site Manager role — with a long-term goal of obtaining a Builder's License.</div>
+          <span class="t-badge">In progress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CREDENTIALS ================= -->
+<section class="section" id="credentials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">Core Competencies &amp; Credentials</span>
+      <h2>Qualified, certified, and site-ready</h2>
+      <p>Formal building qualifications paired with the high-risk safety licences that make complex, high-access projects possible.</p>
+    </div>
+
+    <div class="cred-grid">
+      <div class="cred-card reveal">
+        <div class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <h3>Diploma of Building &amp; Construction</h3>
+        <div class="cred-org">CPC50220 · AHMI / Lead College NSW · Issued May 2025</div>
+        <div class="cred-meta"><span class="cred-chip">RTO 70252</span><span class="cred-chip">Cert AHMI-C004098</span></div>
+        <span class="verified"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Nationally Recognised</span>
+      </div>
+
+      <div class="cred-card reveal">
+        <div class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <h3>Certificate IV Building &amp; Construction</h3>
+        <div class="cred-org">CPC40120 · Lead College NSW · Issued Feb 2023</div>
+        <div class="cred-meta"><span class="cred-chip">RTO 41489</span><span class="cred-chip">CRICOS 03636F</span></div>
+        <span class="verified"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Nationally Recognised</span>
+      </div>
+
+      <div class="cred-card reveal">
+        <div class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 14.5 7.2 16.9l.9-5.4-3.9-3.8 5.4-.8L12 2z"/></svg></div>
+        <h3>Certificate III Painting &amp; Decorating</h3>
+        <div class="cred-org">CPC30611 · Building Institute NSW · Issued Feb 2021</div>
+        <div class="cred-meta"><span class="cred-chip">RTO 41442</span><span class="cred-chip">Cert NVIA1520</span></div>
+        <span class="verified"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Nationally Recognised</span>
+      </div>
+
+      <div class="cred-card reveal">
+        <div class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 5v6c0 5.25 3.4 9.74 8 11 4.6-1.26 8-5.75 8-11V5l-8-3z"/></svg></div>
+        <h3>IRATA Rope Access — Level 2</h3>
+        <div class="cred-org">Industrial Rope Access Trade Association · Valid to Oct 2026</div>
+        <div class="cred-meta"><span class="cred-chip">IRATA No. 2/169560</span><span class="cred-chip">Assessed Oct 2023</span></div>
+        <span class="verified"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Internationally Certified</span>
+      </div>
+
+      <div class="cred-card reveal">
+        <div class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Work Safely at Heights</h3>
+        <div class="cred-org">RIIWHS204D · Sydney Rescue Consultants · Issued Jul 2020</div>
+        <div class="cred-meta"><span class="cred-chip">RTO 45525</span><span class="cred-chip">Student #642</span></div>
+        <span class="verified"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Nationally Recognised</span>
+      </div>
+
+      <div class="cred-card reveal">
+        <div class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 4v5"/></svg></div>
+        <h3>General Construction Induction</h3>
+        <div class="cred-org">SafeWork NSW White Card · Issued Dec 2017</div>
+        <div class="cred-meta"><span class="cred-chip">RTO 800007</span><span class="cred-chip">Card CGI1504950SEQ01</span></div>
+        <span class="verified"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Nationally Recognised</span>
+      </div>
+    </div>
+
+    <div class="skills-band reveal">
+      <h3>Technical &amp; Site Management Skills</h3>
+      <div class="chip-row">
+        <span class="skill-chip">Site Supervision</span>
+        <span class="skill-chip">Project Estimation</span>
+        <span class="skill-chip">Subcontractor Management</span>
+        <span class="skill-chip">WHS / OHS Management</span>
+        <span class="skill-chip">SWMS &amp; Risk Assessment</span>
+        <span class="skill-chip">Quality Assurance</span>
+        <span class="skill-chip">Defect Management</span>
+        <span class="skill-chip">Reading Blueprints</span>
+        <span class="skill-chip">Rope Access Planning</span>
+        <span class="skill-chip">Buildertrend</span>
+        <span class="skill-chip">Procore</span>
+        <span class="skill-chip">Client &amp; Stakeholder Management</span>
+      </div>
+      <div class="lang-row">
+        <div class="lang-item"><b>English</b> — Fluent</div>
+        <div class="lang-item"><b>Spanish</b> — Native</div>
+        <div class="lang-item"><b>Portuguese</b> — Conversational</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BEFORE / AFTER ================= -->
+<section class="section" id="transformation">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">Signature Transformation</span>
+      <h2>Same building, same angle — before and after</h2>
+      <p>A heritage residence restored back to its original character: weathered render and dated trim replaced with a crisp, protective finish true to the period detailing.</p>
+    </div>
+    <div class="ba-card reveal">
+      <div class="ba-images">
+        <div class="ba-img-wrap">
+          <span class="ba-label before">Before</span>
+          <img src="images/res-01-heritage-hero-v2.jpg" alt="Heritage residence exterior before repaint — weathered render, dated window trim">
+        </div>
+        <div class="ba-img-wrap">
+          <span class="ba-label after">After</span>
+          <img src="images/after-01-heritage-render.jpg" alt="Heritage residence exterior after repaint — fresh white render, black window trim">
+        </div>
+        <div class="ba-divider"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+      </div>
+      <div class="ba-caption">
+        <div>
+          <h3>Heritage residence — full exterior restoration</h3>
+          <p>Sydney CBD-fringe period home: render repair, full exterior repaint and black trim detailing, photographed from the same rear courtyard vantage point pre- and post-project.</p>
+        </div>
+        <span class="ba-tag">Residential · Heritage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section class="section section-alt" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">Project Showcase</span>
+      <h2>Work across rope access, residential &amp; commercial</h2>
+      <p>A selection of projects delivered through Painting Culture Sydney — from IRATA high-access facade work to luxury residential renovations and commercial fit-outs.</p>
+    </div>
+
+    <div class="filter-row">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="rope">High-Access / Rope Access</button>
+      <button class="filter-btn" data-filter="residential">Residential</button>
+      <button class="filter-btn" data-filter="commercial">Commercial &amp; Strata</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <div>
+        <span class="section-tag">Let's Talk</span>
+        <h2>Ready to bring 10 years on the tools to your site team.</h2>
+        <p>Available for Site Supervisor, Junior Foreman, Site Manager and Estimator roles across Sydney's Eastern Suburbs and North Shore. Open to a confidential conversation about your next project.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-orange" href="mailto:juandavidr.c@hotmail.com">Email David</a>
+          <a class="btn btn-ghost" href="resume.pdf" download>Download résumé</a>
+        </div>
+      </div>
+      <div class="contact-methods">
+        <a class="contact-method" href="tel:+61450142889">
+          <div class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="cm-label">Phone</div><div class="cm-value">0450 142 889</div></div>
+        </a>
+        <a class="contact-method" href="mailto:juandavidr.c@hotmail.com">
+          <div class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" fill="none"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <div><div class="cm-label">Email</div><div class="cm-value">juandavidr.c@hotmail.com</div></div>
+        </a>
+        <a class="contact-method" href="https://instagram.com/painting.culture" target="_blank" rel="noopener">
+          <div class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+          <div><div class="cm-label">Portfolio</div><div class="cm-value">@painting.culture</div></div>
+        </a>
+        <a class="contact-method" href="https://www.seek.com.au/profiles/juandavid-rubiosalazar-ZrVkkZKz1K" target="_blank" rel="noopener">
+          <div class="cm-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <div><div class="cm-label">SEEK Profile</div><div class="cm-value">View full profile ↗</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <p>© <span id="year"></span> Juan David Rubio Salazar — Painting Culture Sydney. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="tel:+61450142889">Call</a>
+      <a href="mailto:juandavidr.c@hotmail.com">Email</a>
+      <a href="https://instagram.com/painting.culture" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <div class="lb-close" id="lbClose">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <div class="lb-nav lb-prev" id="lbPrev">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </div>
+    <div class="lb-nav lb-next" id="lbNext">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <img id="lbImage" src="" alt="">
+    <div class="lightbox-caption">
+      <div>
+        <div class="g-cat" id="lbCat"></div>
+        <div class="g-title" id="lbTitle"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---- Year ----
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---- Mobile menu ----
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  menuToggle.addEventListener('click', () => mobilePanel.classList.toggle('open'));
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobilePanel.classList.remove('open')));
+
+  // ---- Reveal on scroll ----
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ---- Project data ----
+  const projects = [
+    { src: 'images/rope-01-tile-clean.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'IRATA rope access — roof tile restoration & clean' },
+    { src: 'images/rope-04-highrise-access.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'High-rise balcony access coordination' },
+    { src: 'images/rope-02-heritage-facade-v3.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'Heritage building — complex access environment' },
+    { src: 'images/res-01-heritage-hero.jpg', cat: 'residential', catLabel: 'Residential', title: 'Heritage residence — full exterior restoration' },
+    { src: 'images/res-06-queenslander.jpg', cat: 'residential', catLabel: 'Residential', title: 'Federation-style duplex — full repaint' },
+    { src: 'images/res-04-luxury-bathroom.jpg', cat: 'residential', catLabel: 'Residential', title: 'Luxury bathroom renovation — interior finish' },
+    { src: 'images/res-05-modern-interior-v2.jpg', cat: 'residential', catLabel: 'Residential', title: 'Modern residential interior — new build finish' },
+    { src: 'images/com-04-commercial-exterior.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Multi-storey commercial exterior repaint' },
+    { src: 'images/com-01-office-fitout.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Commercial office fit-out — ceiling & services' },
+    { src: 'images/com-02-ceiling-interior.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Commercial interior — works in progress' },
+    { src: 'images/com-05-warehouse-fitout.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Industrial warehouse fit-out coordination' },
+    { src: 'images/com-03-industrial-crane.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Heritage warehouse conversion — strata facade' },
+  ];
+
+  const grid = document.getElementById('galleryGrid');
+  projects.forEach((p, i) => {
+    const el = document.createElement('div');
+    el.className = 'g-item';
+    el.dataset.cat = p.cat;
+    el.dataset.index = i;
+    el.innerHTML = `
+      <img src="${p.src}" alt="${p.title}" loading="lazy">
+      <div class="g-expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      <div class="g-overlay">
+        <div class="g-cat">${p.catLabel}</div>
+        <div class="g-title">${p.title}</div>
+      </div>`;
+    grid.appendChild(el);
+  });
+
+  // ---- Filtering ----
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.g-item').forEach(item => {
+        item.classList.toggle('hide', f !== 'all' && item.dataset.cat !== f);
+      });
+    });
+  });
+
+  // ---- Lightbox ----
+  const lightbox = document.getElementById('lightbox');
+  const lbImage = document.getElementById('lbImage');
+  const lbCat = document.getElementById('lbCat');
+  const lbTitle = document.getElementById('lbTitle');
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function updateLightbox() {
+    const p = projects[currentIndex];
+    lbImage.src = p.src;
+    lbImage.alt = p.title;
+    lbCat.textContent = p.catLabel;
+    lbTitle.textContent = p.title;
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  grid.addEventListener('click', (e) => {
+    const item = e.target.closest('.g-item');
+    if (item && !item.classList.contains('hide')) openLightbox(Number(item.dataset.index));
+  });
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.getElementById('lbNext').addEventListener('click', () => { currentIndex = (currentIndex + 1) % projects.length; updateLightbox(); });
+  document.getElementById('lbPrev').addEventListener('click', () => { currentIndex = (currentIndex - 1 + projects.length) % projects.length; updateLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % projects.length; updateLightbox(); }
+    if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + projects.length) % projects.length; updateLightbox(); }
+  });
+</script>
+</body>
+</html>
