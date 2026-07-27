@@ -261,6 +261,19 @@
   .paired-showcase .g-expand svg{width:12px;height:12px;}
   }
 
+  /* ---------- Trio Showcase (always 3-across, all breakpoints) ---------- */
+  .trio-showcase{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:18px;}
+  .trio-showcase .g-item{aspect-ratio:4/3;}
+  @media(max-width:700px){
+  .trio-showcase{gap:6px;}
+  .trio-showcase .g-item{aspect-ratio:3/4;}
+  .trio-showcase .g-title{font-size:10px;line-height:1.25;}
+  .trio-showcase .g-cat{font-size:8px;margin-bottom:2px;}
+  .trio-showcase .g-overlay{padding:7px;}
+  .trio-showcase .g-expand{width:20px;height:20px;top:6px;right:6px;}
+  .trio-showcase .g-expand svg{width:10px;height:10px;}
+  }
+
   /* ---------- Projects / Gallery ---------- */
   .filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
   .filter-btn{
@@ -751,6 +764,33 @@
       </div>
     </div>
 
+    <div class="trio-showcase reveal" id="trioShowcase">
+      <div class="g-item contain" id="trioItemScaffold">
+        <img src="images/rope-04-highrise-access.jpg" alt="High-rise rope access — no scaffolding required" loading="lazy">
+        <div class="g-expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-overlay">
+          <div class="g-cat">High-Access / Rope Access</div>
+          <div class="g-title">High-rise rope access — no scaffolding required</div>
+        </div>
+      </div>
+      <div class="g-item contain" id="trioItemPCS">
+        <img src="images/com-02-ceiling-interior.jpg" alt="Commercial & Residential Facade Specialists" loading="lazy">
+        <div class="g-expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-overlay">
+          <div class="g-cat">Commercial & Strata</div>
+          <div class="g-title">Commercial & Residential Facade Specialists</div>
+        </div>
+      </div>
+      <div class="g-item contain" id="trioItemPrecision">
+        <img src="images/com-04-commercial-exterior.jpg" alt="Multi-storey commercial exterior repaint" loading="lazy">
+        <div class="g-expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-overlay">
+          <div class="g-cat">Commercial & Strata</div>
+          <div class="g-title">Multi-storey commercial exterior repaint</div>
+        </div>
+      </div>
+    </div>
+
     <div class="filter-row">
       <button class="filter-btn active" data-filter="all">All Projects</button>
       <button class="filter-btn" data-filter="rope">High-Access / Rope Access</button>
@@ -850,15 +890,15 @@
   // ---- Project data ----
   const projects = [
     { src: 'images/rope-05-height-coating.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'IRATA rope access — full exterior height coating' },
-    { src: 'images/rope-04-highrise-access.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'High-rise rope access — no scaffolding required', contain: true },
+    { src: 'images/rope-04-highrise-access.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'High-rise rope access — no scaffolding required', contain: true, pinned: true },
     { src: 'images/rope-02-heritage-facade-v3.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'Heritage building — complex access environment', pinned: true },
     { src: 'images/res-01-heritage-hero.jpg', cat: 'residential', catLabel: 'Residential', title: 'Heritage residence — full exterior restoration', pinned: true },
     { src: 'images/res-06-queenslander.jpg', cat: 'residential', catLabel: 'Residential', title: 'Federation-style duplex — full repaint' },
     { src: 'images/res-04-luxury-bathroom.jpg', cat: 'residential', catLabel: 'Residential', title: 'Luxury bathroom renovation — interior finish' },
     { src: 'images/res-05-modern-interior-v2.jpg', cat: 'residential', catLabel: 'Residential', title: 'Modern residential interior — new build finish' },
-    { src: 'images/com-04-commercial-exterior.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Multi-storey commercial exterior repaint', contain: true },
+    { src: 'images/com-04-commercial-exterior.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Multi-storey commercial exterior repaint', contain: true, pinned: true },
     { src: 'images/com-01-office-fitout.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Commercial office fit-out — ceiling & services' },
-    { src: 'images/com-02-ceiling-interior.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Commercial & Residential Facade Specialists', contain: true },
+    { src: 'images/com-02-ceiling-interior.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Commercial & Residential Facade Specialists', contain: true, pinned: true },
     { src: 'images/com-05-warehouse-fitout.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Industrial warehouse fit-out coordination' },
     { src: 'images/com-03-industrial-crane.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Heritage warehouse conversion — strata facade' },
   ];
@@ -926,6 +966,15 @@
   });
   document.getElementById('pairItemRes').addEventListener('click', () => {
     openLightbox(projects.findIndex(p => p.src === 'images/res-01-heritage-hero.jpg'));
+  });
+  document.getElementById('trioItemScaffold').addEventListener('click', () => {
+    openLightbox(projects.findIndex(p => p.src === 'images/rope-04-highrise-access.jpg'));
+  });
+  document.getElementById('trioItemPCS').addEventListener('click', () => {
+    openLightbox(projects.findIndex(p => p.src === 'images/com-02-ceiling-interior.jpg'));
+  });
+  document.getElementById('trioItemPrecision').addEventListener('click', () => {
+    openLightbox(projects.findIndex(p => p.src === 'images/com-04-commercial-exterior.jpg'));
   });
   document.getElementById('lbClose').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
