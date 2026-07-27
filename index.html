@@ -764,6 +764,33 @@
       </div>
     </div>
 
+    <div class="trio-showcase reveal" id="ropeTrioShowcase">
+      <div class="g-item" id="trioItemIrata">
+        <img src="images/rope-05-height-coating.jpg" alt="IRATA rope access — full exterior height coating" loading="lazy">
+        <div class="g-expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-overlay">
+          <div class="g-cat">High-Access / Rope Access</div>
+          <div class="g-title">IRATA rope access — full exterior height coating</div>
+        </div>
+      </div>
+      <div class="g-item" id="trioItemBrick">
+        <img src="images/rope-06-brick-drilling.jpg" alt="Rope access — brick facade anchor drilling" loading="lazy">
+        <div class="g-expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-overlay">
+          <div class="g-cat">High-Access / Rope Access</div>
+          <div class="g-title">Rope access — brick facade anchor drilling</div>
+        </div>
+      </div>
+      <div class="g-item" id="trioItemRooftop">
+        <img src="images/rope-07-rooftop-harbour.jpg" alt="High-rise rooftop access — Sydney Harbour" loading="lazy">
+        <div class="g-expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-overlay">
+          <div class="g-cat">High-Access / Rope Access</div>
+          <div class="g-title">High-rise rooftop access — Sydney Harbour</div>
+        </div>
+      </div>
+    </div>
+
     <div class="trio-showcase reveal" id="trioShowcase">
       <div class="g-item contain" id="trioItemScaffold">
         <img src="images/rope-04-highrise-access.jpg" alt="High-rise rope access — no scaffolding required" loading="lazy">
@@ -889,7 +916,9 @@
 
   // ---- Project data ----
   const projects = [
-    { src: 'images/rope-05-height-coating.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'IRATA rope access — full exterior height coating' },
+    { src: 'images/rope-05-height-coating.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'IRATA rope access — full exterior height coating', pinned: true },
+    { src: 'images/rope-06-brick-drilling.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'Rope access — brick facade anchor drilling', pinned: true },
+    { src: 'images/rope-07-rooftop-harbour.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'High-rise rooftop access — Sydney Harbour', pinned: true },
     { src: 'images/rope-04-highrise-access.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'High-rise rope access — no scaffolding required', contain: true, pinned: true },
     { src: 'images/rope-02-heritage-facade-v3.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'Heritage building — complex access environment', pinned: true },
     { src: 'images/res-01-heritage-hero.jpg', cat: 'residential', catLabel: 'Residential', title: 'Heritage residence — full exterior restoration', pinned: true },
@@ -966,6 +995,15 @@
   });
   document.getElementById('pairItemRes').addEventListener('click', () => {
     openLightbox(projects.findIndex(p => p.src === 'images/res-01-heritage-hero.jpg'));
+  });
+  document.getElementById('trioItemIrata').addEventListener('click', () => {
+    openLightbox(projects.findIndex(p => p.src === 'images/rope-05-height-coating.jpg'));
+  });
+  document.getElementById('trioItemBrick').addEventListener('click', () => {
+    openLightbox(projects.findIndex(p => p.src === 'images/rope-06-brick-drilling.jpg'));
+  });
+  document.getElementById('trioItemRooftop').addEventListener('click', () => {
+    openLightbox(projects.findIndex(p => p.src === 'images/rope-07-rooftop-harbour.jpg'));
   });
   document.getElementById('trioItemScaffold').addEventListener('click', () => {
     openLightbox(projects.findIndex(p => p.src === 'images/rope-04-highrise-access.jpg'));
