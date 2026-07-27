@@ -293,6 +293,7 @@
     border:1px solid rgba(255,255,255,0.15);
   }
   .g-expand svg{width:15px;height:15px;stroke:#fff;}
+  .g-item.contain img{object-fit:contain;background:var(--surface-2);}
 
   /* lightbox */
   .lightbox{
@@ -849,15 +850,15 @@
   // ---- Project data ----
   const projects = [
     { src: 'images/rope-05-height-coating.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'IRATA rope access — full exterior height coating' },
-    { src: 'images/rope-04-highrise-access.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'Rope access — anchor point & fall protection setup' },
+    { src: 'images/rope-04-highrise-access.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'High-rise rope access — no scaffolding required', contain: true },
     { src: 'images/rope-02-heritage-facade-v3.jpg', cat: 'rope', catLabel: 'High-Access / Rope Access', title: 'Heritage building — complex access environment', pinned: true },
     { src: 'images/res-01-heritage-hero.jpg', cat: 'residential', catLabel: 'Residential', title: 'Heritage residence — full exterior restoration', pinned: true },
     { src: 'images/res-06-queenslander.jpg', cat: 'residential', catLabel: 'Residential', title: 'Federation-style duplex — full repaint' },
     { src: 'images/res-04-luxury-bathroom.jpg', cat: 'residential', catLabel: 'Residential', title: 'Luxury bathroom renovation — interior finish' },
     { src: 'images/res-05-modern-interior-v2.jpg', cat: 'residential', catLabel: 'Residential', title: 'Modern residential interior — new build finish' },
-    { src: 'images/com-04-commercial-exterior.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Multi-storey commercial exterior repaint' },
+    { src: 'images/com-04-commercial-exterior.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Multi-storey commercial exterior repaint', contain: true },
     { src: 'images/com-01-office-fitout.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Commercial office fit-out — ceiling & services' },
-    { src: 'images/com-02-ceiling-interior.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Commercial interior — works in progress' },
+    { src: 'images/com-02-ceiling-interior.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Commercial & Residential Facade Specialists', contain: true },
     { src: 'images/com-05-warehouse-fitout.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Industrial warehouse fit-out coordination' },
     { src: 'images/com-03-industrial-crane.jpg', cat: 'commercial', catLabel: 'Commercial & Strata', title: 'Heritage warehouse conversion — strata facade' },
   ];
@@ -866,7 +867,7 @@
   projects.forEach((p, i) => {
     if (p.pinned) return;
     const el = document.createElement('div');
-    el.className = 'g-item';
+    el.className = 'g-item' + (p.contain ? ' contain' : '');
     el.dataset.cat = p.cat;
     el.dataset.index = i;
     el.innerHTML = `
